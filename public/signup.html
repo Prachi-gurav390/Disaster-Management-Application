@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <div id="registration-form" class="registration-form">
+        <h2 class="form-title">Agency Registration</h2>
+        <form id="agencyForm" action="http://localhost:3090/registerAgency" method="post">
+            <div class="form-group">
+                <label for="agencyName">Agency Name:</label>
+                <input type="text" id="agencyName" name="agencyName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="uid">UID:</label>
+                <input type="number" id="uid" name="uid" min="100000" max="999999" required>
+            </div>
+
+            <div class="form-group">
+                <label for="zoneName">Zone Name:</label>
+                <input type="text" id="zoneName" name="zoneName" required>
+                <input type="hidden" id="zoneId" name="zoneId">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="specialization">Specialization:</label>
+                <input type="text" id="specialization" name="specialization" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <!-- <div class="equipment-container">
+                <h3>Equipment Information</h3>
+                <div class="equipment-triplet">
+                    <input type="text" placeholder="Type">
+                    <input type="number" placeholder="Quantity">
+                    <input type="text" placeholder="Description">
+                    <button type="button" class="remove-btn" onclick="removeEquipment(this)">Remove</button>
+                </div>
+            </div>
+            
+            <button type="button" class="add-btn" onclick="addEquipment()">Add</button>
+
+            <div class="manpower-container">
+                <h3>Manpower Information</h3>
+                <div class="manpower-triplet">
+                    <input type="text" placeholder="Type">
+                    <input type="number" placeholder="Quantity">
+                    <input type="text" placeholder="Description">
+                    <button type="button" class="remove-btn" onclick="removemanpower(this)">Remove</button>
+                </div>
+            </div>
+            
+            <button type="button" class="add-btn" onclick="addmanpower()">Add</button>
+            <br><br> -->
+            <button type="submit" class="submit-btn">Sign In</button>
+        </form>
+    </div>
+
+    <script>
+        function addEquipment() {
+            const equipmentContainer = document.querySelector('.equipment-container');
+            const equipmentTriplet = document.createElement('div');
+            equipmentTriplet.classList.add('equipment-triplet');
+
+            const inputType = document.createElement('input');
+            inputType.type = 'text';
+            inputType.placeholder = 'Type';
+
+            const inputQuantity = document.createElement('input');
+            inputQuantity.type = 'number';
+            inputQuantity.placeholder = 'Quantity';
+
+            const inputDescription = document.createElement('input');
+            inputDescription.type = 'text';
+            inputDescription.placeholder = 'Description';
+
+            const removeButton = document.createElement('button');
+            removeButton.type = 'button';
+            removeButton.classList.add('remove-btn');
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', function () {
+                equipmentContainer.removeChild(equipmentTriplet);
+            });
+
+            equipmentTriplet.appendChild(inputType);
+            equipmentTriplet.appendChild(inputQuantity);
+            equipmentTriplet.appendChild(inputDescription);
+            equipmentTriplet.appendChild(removeButton);
+
+            equipmentContainer.appendChild(equipmentTriplet);
+        }
+
+        function removeEquipment(button) {
+            const equipmentContainer = document.querySelector('.equipment-container');
+            const equipmentTriplet = button.parentElement;
+            equipmentContainer.removeChild(equipmentTriplet);
+        }
+        function addmanpower() {
+            const manpowerContainer = document.querySelector('.manpower-container');
+            const manpowerTriplet = document.createElement('div');
+            manpowerTriplet.classList.add('manpower-triplet');
+
+            const inputType = document.createElement('input');
+            inputType.type = 'text';
+            inputType.placeholder = 'Type';
+
+            const inputQuantity = document.createElement('input');
+            inputQuantity.type = 'number';
+            inputQuantity.placeholder = 'Quantity';
+
+            const inputDescription = document.createElement('input');
+            inputDescription.type = 'text';
+            inputDescription.placeholder = 'Description';
+
+            const removeButton = document.createElement('button');
+            removeButton.type = 'button';
+            removeButton.classList.add('remove-btn');
+            removeButton.textContent = 'Remove';
+            removeButton.addEventListener('click', function () {
+                manpowerContainer.removeChild(manpowerTriplet);
+            });
+
+            manpowerTriplet.appendChild(inputType);
+            manpowerTriplet.appendChild(inputQuantity);
+            manpowerTriplet.appendChild(inputDescription);
+            manpowerTriplet.appendChild(removeButton);
+
+            manpowerContainer.appendChild(manpowerTriplet);
+        }
+
+        function removemanpower(button) {
+            const manpowerContainer = document.querySelector('.manpower-container');
+            const manpowerTriplet = button.parentElement;
+            manpowerContainer.removeChild(manpowerTriplet);
+        }
+    </script>
+</body>
+</html>
